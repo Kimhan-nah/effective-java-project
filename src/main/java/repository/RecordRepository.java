@@ -1,4 +1,6 @@
-package model;
+package repository;
+
+import model.Record;
 
 import java.util.List;
 import java.util.Optional;
