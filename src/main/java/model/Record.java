@@ -20,6 +20,12 @@ public class Record {
     this.type = type;
   }
 
+  public Record(LocalDate date, User user, Type type) {
+    this.date = date;
+    this.user = user;
+    this.type = type;
+  }
+
   public Long getId() {
     return id;
   }
@@ -51,4 +57,6 @@ public class Record {
   public void setType(Type type) {
     this.type = type;
   }
+
+  // TODO toString(),equals override...?
 }
