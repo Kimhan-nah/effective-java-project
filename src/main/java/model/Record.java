@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Record {
 
-  // TODO Enum 정의 -> abstract class 분리
-  private enum Type {
+  // TODO Enum 정의 -> abstract class 분리..hmm..
+  public enum Type {    // 일단 임시로 public enum으로 정의
     EXERCISE, WAKEUP
   }
-  private Long id;
+  private Long id;    // primary key
   private Date date;
   private User user;
   private Type type;
@@ -24,15 +24,31 @@ public class Record {
     return id;
   }
 
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public Date getDate() {
     return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
   }
 
   public User getUser() {
     return user;
   }
 
+  public void setUser(User user) {
+    this.user = user;
+  }
+
   public Type getType() {
     return type;
+  }
+
+  public void setType(Type type) {
+    this.type = type;
   }
 }
