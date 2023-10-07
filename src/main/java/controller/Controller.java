@@ -29,7 +29,7 @@ public class Controller {
           OutputView.printMessage("데이터 삭제");
           break;
         case "4":
-          OutputView.printMessage("데이터 조회");
+          manager.searchData();
           break;
         case "5":
           OutputView.printMessage("프로그램 종료");

@@ -6,6 +6,7 @@ import view.InputView;
 import view.OutputView;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Manager {
   // TODO final? static? 생각해보기
@@ -42,5 +43,25 @@ public class Manager {
     OutputView.printMessage("데이터 추가 완료");
     OutputView.printMessage(save.getId() + " " + save.getDate() + " " + save.getUser().getNickname() + " " + save.getType());
 
+  }
+
+  public void searchData() {
+    OutputView.printMessage("데이터 조회");
+
+    // 이름 입력
+    OutputView.printMessage("닉네임을 입력해주세요.");
+    String nickname = InputView.inputNickname();
+
+    // 데이터 조회
+    User user = userRepository.findByNickname(nickname).isPresent() ? userRepository.findByNickname(nickname).get() : null;
+    if (user == null) {
+      OutputView.printMessage("해당 닉네임의 유저가 존재하지 않습니다.");
+      return;
+    }
+    List<Record> records = recordRepository.findAllByUser(user);
+    OutputView.printMessage("데이터 조회 완료");
+    for (Record record : records) {
+      OutputView.printMessage(record.getId() + " " + record.getDate() + " " + record.getUser().getNickname() + " " + record.getType());
+    }
   }
 }
