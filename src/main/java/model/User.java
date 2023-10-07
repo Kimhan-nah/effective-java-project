@@ -1,25 +1,22 @@
 package model;
 
 public class User {
-  private Long id;
-  private String name;
-  private String nickname;
-
-  public User(Long id, String name, String nickname) {
-    this.id = id;
-    this.name = name;
-    this.nickname = nickname;
-  }
+  private Long id;    // primary key
+  private String nickname;  // unique
 
   public Long getId() {
     return id;
   }
 
-  public String getName() {
-    return name;
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public String getNickname() {
     return nickname;
+  }
+
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
   }
 }
