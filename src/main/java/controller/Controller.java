@@ -1,18 +1,26 @@
 package controller;
 
+import model.Manager;
+import repository.RecordRepository;
+import repository.UserRepository;
 import view.InputView;
 import view.OutputView;
 
 public class Controller {
+  private final Manager manager;
 
-  public static void run() {
+  public Controller(Manager manager) {
+    this.manager = manager;
+  }
+
+  public void run() {
     label:
     while (true) {
       OutputView.printMain();
       String input = InputView.inputMenu();
       switch (input) {
         case "1":
-          OutputView.printMessage("데이터 추가");
+          manager.addData();
           break;
         case "2":
           OutputView.printMessage("데이터 수정");
