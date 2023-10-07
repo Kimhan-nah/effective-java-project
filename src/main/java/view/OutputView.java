@@ -24,6 +24,6 @@ public class OutputView {
   }
 
   public static void printMessage(String message) {
-    System.out.println(message);
+    System.out.println("\t\t\t\t\t\t\t" + message);
   }
 }
