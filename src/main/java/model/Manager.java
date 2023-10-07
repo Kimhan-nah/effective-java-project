@@ -19,49 +19,57 @@ public class Manager {
   }
 
   public void addData() {
-    OutputView.printMessage("데이터 추가");
+    OutputView.printlnMessage("데이터 추가");
+    LocalDate date;
+    String nickname;
+    Record.Type type;
 
-    // 날짜 선택
-    OutputView.printMessage("날짜를 입력해주세요.");
-    LocalDate date = InputView.inputDate();
+    try {
+      // 날짜 선택
+      OutputView.printlnMessage("날짜를 입력해주세요.");
+      date = InputView.inputDate();
 
-    // 이름 입력
-    OutputView.printMessage("닉네임을 입력해주세요.");
-    String nickname = InputView.inputNickname();
-    // user 없으면 생성
-    if (userRepository.findByNickname(nickname).isEmpty()) {
-      userRepository.save(new User(nickname));
+      // 이름 입력
+      OutputView.printlnMessage("닉네임을 입력해주세요.");
+      nickname = InputView.inputNickname();
+      // user 없으면 생성
+      if (userRepository.findByNickname(nickname).isEmpty()) {
+        userRepository.save(new User(nickname));
+      }
+
+      // type 입력
+      OutputView.printlnMessage("타입을 입력해주세요. 1. 운동 2. 기상");
+      type = InputView.inputType();
+    } catch (IllegalArgumentException e) {
+      OutputView.printErrorMessage(e.getMessage());
+      return;
     }
-
-    // type 입력
-    OutputView.printMessage("타입을 입력해주세요. 1. 운동 2. 기상");
-    Record.Type type = InputView.inputType();
 
     // 데이터 추가
     // TODO Exception 처리 -> 일어나진 않겠지만..
     Record save = recordRepository.save(new Record(date, userRepository.findByNickname(nickname).get(), type));
-    OutputView.printMessage("데이터 추가 완료");
-    OutputView.printMessage(save.getId() + " " + save.getDate() + " " + save.getUser().getNickname() + " " + save.getType());
+    OutputView.printlnMessage("데이터 추가 완료");
+    OutputView.printlnMessage(save.getId() + " " + save.getDate() + " " + save.getUser().getNickname() + " " + save.getType());
 
   }
 
   public void searchData() {
-    OutputView.printMessage("데이터 조회");
+    OutputView.printlnMessage("데이터 조회");
 
     // 이름 입력
-    OutputView.printMessage("닉네임을 입력해주세요.");
+    OutputView.printlnMessage("닉네임을 입력해주세요.");
     String nickname = InputView.inputNickname();
 
     // 데이터 조회
     User user = userRepository.findByNickname(nickname).isPresent() ? userRepository.findByNickname(nickname).get() : null;
     if (user == null) {
-      OutputView.printMessage("해당 닉네임의 유저가 존재하지 않습니다.");
+      OutputView.printlnMessage("해당 닉네임의 유저가 존재하지 않습니다.");
       return;
     }
     List<Record> records = recordRepository.findAllByUser(user);
-    OutputView.printMessage("데이터 조회 완료");
+    OutputView.printlnMessage("데이터 조회 완료");
     for (Record record : records) {
-      OutputView.printMessage(record.getId() + " " + record.getDate() + " " + record.getUser().getNickname() + " " + record.getType());
+      OutputView.printlnMessage(record.getId() + " " + record.getDate() + " " + record.getUser().getNickname() + " " + record.getType());
     }
   }
 }
