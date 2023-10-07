@@ -3,6 +3,7 @@ package repository;
 import model.Record;
 import model.User;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -28,7 +29,7 @@ public class MemoryRecordRepository implements RecordRepository {
   }
 
   @Override
-  public List<Record> findAllByDate(Date date) {
+  public List<Record> findAllByDate(LocalDate date) {
     return store.values().stream()
         .filter(record -> record.getDate().equals(date))
         .collect(Collectors.toList());
