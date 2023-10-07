@@ -4,11 +4,6 @@ public class User {
   private Long id;    // primary key
   private String nickname;  // unique
 
-  // TODO 생성자... 생각해보기
-  public User(String nickname) {
-    this.nickname = nickname;
-  }
-
   public Long getId() {
     return id;
   }
@@ -23,5 +18,12 @@ public class User {
 
   public void setNickname(String nickname) {
     this.nickname = nickname;
+  }
+
+  // SECTION static factory method
+  public static User of(String nickname) {
+    User user = new User();
+    user.nickname = nickname;
+    return user;
   }
 }

@@ -13,19 +13,6 @@ public class Record {
   private User user;
   private Type type;
 
-  public Record(Long id, LocalDate date, User user, Type type) {
-    this.id = id;
-    this.date = date;
-    this.user = user;
-    this.type = type;
-  }
-
-  public Record(LocalDate date, User user, Type type) {
-    this.date = date;
-    this.user = user;
-    this.type = type;
-  }
-
   public Long getId() {
     return id;
   }
@@ -56,6 +43,17 @@ public class Record {
 
   public void setType(Type type) {
     this.type = type;
+  }
+
+  /**
+   * static factory method
+   */
+  public static Record of(LocalDate date, User user, Type type) {
+    Record record = new Record();
+    record.date = date;
+    record.user = user;
+    record.type = type;
+    return record;
   }
 
   // TODO toString(),equals override...?

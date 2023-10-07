@@ -34,7 +34,7 @@ public class Manager {
       nickname = InputView.inputNickname();
       // user 없으면 생성
       if (userRepository.findByNickname(nickname).isEmpty()) {
-        userRepository.save(new User(nickname));
+        userRepository.save(User.of(nickname));
       }
 
       // type 입력
@@ -47,7 +47,7 @@ public class Manager {
 
     // 데이터 추가
     // TODO Exception 처리 -> 일어나진 않겠지만..
-    Record save = recordRepository.save(new Record(date, userRepository.findByNickname(nickname).get(), type));
+    Record save = recordRepository.save(Record.of(date, userRepository.findByNickname(nickname).get(), type));
     OutputView.printlnMessage("데이터 추가 완료");
     OutputView.printlnMessage(save.getId() + " " + save.getDate() + " " + save.getUser().getNickname() + " " + save.getType());
 
