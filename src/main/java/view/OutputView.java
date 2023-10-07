@@ -1,6 +1,8 @@
 package view;
 
 public class OutputView {
+  private static final String red = "\u001B[31m";
+  private static final String reset = "\u001B[0m";
   private OutputView() {}
 
   public static void printMain() {
@@ -23,7 +25,15 @@ public class OutputView {
     System.out.print("┘\n");
   }
 
-  public static void printMessage(String message) {
+  public static void printlnMessage(String message) {
     System.out.println("\t\t\t\t\t\t\t" + message);
+  }
+
+  public static void printMessage(String message) {
+    System.out.print("\t\t\t\t\t\t\t" + message);
+  }
+
+  public static void printErrorMessage(String message) {
+    System.out.println("\t\t\t\t\t\t\t" + red + message + reset);
   }
 }
