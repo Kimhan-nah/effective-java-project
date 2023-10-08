@@ -10,7 +10,9 @@ package view;
 public class OutputView {
   private static final String red = "\u001B[31m";
   private static final String reset = "\u001B[0m";
-  private OutputView() {}   // instance 생성 방지
+  private OutputView() {
+    throw new AssertionError();
+  }   // instance 생성 방지
 
   public static void printMain() {
     System.out.println();

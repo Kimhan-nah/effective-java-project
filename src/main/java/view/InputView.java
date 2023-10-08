@@ -14,7 +14,9 @@ import java.util.Scanner;
  */
 public class InputView {
   private static final Scanner scanner = new Scanner(System.in);
-  private InputView() {}    // instance 생성 방지
+  private InputView() {
+    throw new AssertionError();
+  }    // instance 생성 방지
 
   public static int inputMenu() throws IllegalArgumentException {
     OutputView.printMessage("▷ 입력(1/2/3/4/5): ");
