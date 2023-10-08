@@ -67,4 +67,31 @@ public class User {
     this.email = builder.email;
     this.gender = builder.gender;
   }
+
+  // equals, hashCode, toString
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof User)) return false;
+
+    User user = (User) o;
+
+    return nickname.equals(user.nickname);
+  }
+
+  @Override
+  public int hashCode() {
+    return nickname.hashCode();
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "id=" + id + "', "+
+            "nickname='" + nickname + "', " +
+            "email='" + email + "', " +
+            "gender='" + gender + "'" +
+            '}';
+  }
+
 }
