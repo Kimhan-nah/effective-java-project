@@ -5,9 +5,16 @@ import model.Record;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * <Item 4 : 인스턴스화를 막으려거든 private 생성자를 사용하라>
+ * static method, static field만을 담은 class
+ * instance 없이 사용
+ * private constructor를 만들어서 컴파일러가 자동으로 default constructor 생성하지 않도록 하자!
+ * abstract class와 달리 상속도 안 되므로 인스턴스화 완전히 막을 수 있다
+ */
 public class InputView {
   private static final Scanner scanner = new Scanner(System.in);
-  private InputView() {}
+  private InputView() {}    // instance 생성 방지
 
   public static int inputMenu() throws IllegalArgumentException {
     OutputView.printMessage("▷ 입력(1/2/3/4/5): ");

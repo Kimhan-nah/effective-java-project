@@ -1,9 +1,16 @@
 package view;
 
+/**
+ * <Item 4 : 인스턴스화를 막으려거든 private 생성자를 사용하라>
+ * static method, static field만을 담은 class
+ * instance 없이 사용
+ * private constructor를 만들어서 컴파일러가 자동으로 default constructor 생성하지 않도록 하자!
+ * abstract class와 달리 상속도 안 되므로 인스턴스화 완전히 막을 수 있다
+ */
 public class OutputView {
   private static final String red = "\u001B[31m";
   private static final String reset = "\u001B[0m";
-  private OutputView() {}
+  private OutputView() {}   // instance 생성 방지
 
   public static void printMain() {
     System.out.println();
