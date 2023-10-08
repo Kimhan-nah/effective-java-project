@@ -11,7 +11,7 @@ public class Controller {
   private Controller(Manager manager) {
     this.manager = manager;
   }
-  // static factory method
+  // static factory method (의존 객체 주입)
   public static Controller of(Manager manager) {
     return new Controller(manager);
   }

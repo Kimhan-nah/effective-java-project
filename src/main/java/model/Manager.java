@@ -1,5 +1,7 @@
 package model;
 
+import factory.RecordRepositoryFactory;
+import factory.UserRepositoryFactory;
 import repository.RecordRepository;
 import repository.UserRepository;
 import view.InputView;
@@ -18,9 +20,13 @@ public class Manager {
     this.userRepository = userRepository;
   }
 
-  // static factory method
+  // static factory method (의존 객체 주입)
   public static Manager of(RecordRepository recordRepository, UserRepository userRepository)
   { return new Manager(recordRepository, userRepository); }
+
+  // Factory Method Pattern
+  public static Manager of(RecordRepositoryFactory recordRepositoryFactory, UserRepositoryFactory userRepositoryFactory)
+  { return new Manager(recordRepositoryFactory.getRecordRepository(), userRepositoryFactory.getUserRepository()); }
 
   public void addData() {
     OutputView.printlnMessage("데이터 추가");
