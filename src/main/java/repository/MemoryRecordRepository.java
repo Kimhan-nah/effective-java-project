@@ -11,6 +11,10 @@ public class MemoryRecordRepository implements RecordRepository {
   private static Map<Long, Record> store = new HashMap<>();
   private static long sequence = 0L;
 
+  // 싱글톤 패턴
+  private MemoryRecordRepository() {}
+  private static final MemoryRecordRepository INSTANCE = new MemoryRecordRepository();
+
   @Override
   public Record save(Record record) {
     record.setId(++sequence);
@@ -49,5 +53,9 @@ public class MemoryRecordRepository implements RecordRepository {
     return store.values().stream()
         .filter(record -> record.getType().equals(type))
         .collect(Collectors.toList());
+  }
+
+  public static RecordRepository getInstance() {
+    return INSTANCE;
   }
 }

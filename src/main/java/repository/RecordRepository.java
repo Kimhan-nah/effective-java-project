@@ -16,5 +16,6 @@ public interface RecordRepository {
   List<Record> findAllByDate(LocalDate date);
   List<Record> findAllByUser(User user);
   List<Record> findAllByType(Record.Type type);
+
   // TODO delete, update
 }

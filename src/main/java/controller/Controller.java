@@ -7,9 +7,15 @@ import view.OutputView;
 public class Controller {
   private final Manager manager;
 
-  public Controller(Manager manager) {
+  // 싱글톤 패턴
+  private Controller(Manager manager) {
     this.manager = manager;
   }
+  // static factory method
+  public static Controller of(Manager manager) {
+    return new Controller(manager);
+  }
+
 
   public void run() {
     label:

@@ -8,6 +8,10 @@ public class MemoryUserRepository implements UserRepository{
   private static Map<Long, User> store = new HashMap<>();
   private static long sequence = 0L;
 
+  // 싱글톤 패턴
+  private MemoryUserRepository() {}
+  private static final MemoryUserRepository INSTANCE = new MemoryUserRepository();
+
   @Override
   public User save(User user) {
     user.setId(++sequence);
@@ -30,5 +34,9 @@ public class MemoryUserRepository implements UserRepository{
   @Override
   public List<User> findAll() {
     return new ArrayList<>(store.values());
+  }
+
+  public static UserRepository getInstance() {
+    return INSTANCE;
   }
 }

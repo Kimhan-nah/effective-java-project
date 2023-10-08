@@ -11,5 +11,6 @@ public interface UserRepository {
   Optional<User> findById(Long id);
   Optional<User> findByNickname(String nickname);
   List<User> findAll();
+
   // TODO delete, update
 }

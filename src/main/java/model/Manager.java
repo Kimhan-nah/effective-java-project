@@ -9,14 +9,18 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Manager {
-  // TODO final? static? 생각해보기
   private final RecordRepository recordRepository;
   private final UserRepository userRepository;
 
-  public Manager(RecordRepository recordRepository, UserRepository userRepository) {
+  // 싱글톤 패턴
+  private Manager(RecordRepository recordRepository, UserRepository userRepository) {
     this.recordRepository = recordRepository;
     this.userRepository = userRepository;
   }
+
+  // static factory method
+  public static Manager of(RecordRepository recordRepository, UserRepository userRepository)
+  { return new Manager(recordRepository, userRepository); }
 
   public void addData() {
     OutputView.printlnMessage("데이터 추가");

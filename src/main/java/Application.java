@@ -8,10 +8,10 @@ import repository.UserRepository;
 
 public class Application {
   public static void main(String[] args) {
-    RecordRepository recordRepository = new MemoryRecordRepository();
-    UserRepository userRepository = new MemoryUserRepository();
-    Manager manager = new Manager(recordRepository, userRepository);
-    Controller controller = new Controller(manager);
+    RecordRepository recordRepository = MemoryRecordRepository.getInstance();
+    UserRepository userRepository = MemoryUserRepository.getInstance();
+    Manager manager = Manager.of(recordRepository, userRepository);
+    Controller controller = Controller.of(manager);
     controller.run();
   }
 }
